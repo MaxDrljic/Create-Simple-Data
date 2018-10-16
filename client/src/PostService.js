@@ -4,6 +4,7 @@ const url = 'http://localhost:5000/api/posts/';
 
 class PostService {
   // Get Posts
+  // static attribute removes the instatiation('new' keyword), instead we can use these methods like: PostService.getPosts 
   static getPosts() {
     return new Promise(async (resolve, reject) => {
       try {
