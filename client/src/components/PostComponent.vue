@@ -14,6 +14,7 @@
         v-bind:item="post"
         v-bind:index="index"
         v-bind:key="post._id"
+        v-on:dblclick="deletePost(post._id)"
       >
         {{ `${post.createdAt.getDate()}/${post.createdAt.getMonth()}/${post.createdAt.getFullYear()}` }}
         <p class="text">{{ post.text }}</p>
@@ -44,6 +45,10 @@ export default {
   methods: {
     async createPost() {
       await PostService.insertPost(this.text);
+      this.posts = await PostService.getPosts();
+    },
+    async deletePost(id) {
+      await PostService.deletePost(id);
       this.posts = await PostService.getPosts();
     }
   }
